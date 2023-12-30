@@ -194,18 +194,18 @@ impl EventHandler for MyGame {
     fn key_down_event(&mut self, ctx: &mut Context, input: KeyInput, _repeat: bool) -> GameResult {
         let mut is_chrg = false;
         match input.keycode {
-            Some(KeyCode::Up) => { is_chrg = self.move_title();}
-            Some(KeyCode::Down) => {
+            Some(KeyCode::Up) | Some(KeyCode::W) => { is_chrg = self.move_title();}
+            Some(KeyCode::Down) | Some(KeyCode::S) => {
                 self.reverse_map();
                 is_chrg = self.move_title();
                 self.reverse_map();
             }
-            Some(KeyCode::Left) => {
+            Some(KeyCode::Left) | Some(KeyCode::A) => {
                 self.transp_map();
                 is_chrg = self.move_title();
                 self.transp_map();
             }
-            Some(KeyCode::Right) => {
+            Some(KeyCode::Right) | Some(KeyCode::D) => {
                 self.transp_map();
                 self.reverse_map();
                 is_chrg = self.move_title();
